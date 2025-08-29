@@ -1,471 +1,980 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Ridwan Farah - Electrical & Electronics Engineer Portfolio showcasing projects, skills and contact info." />
-    <meta name="keywords" content="Ridwan Farah, Electrical Engineer, Electronics, IoT, AI, Portfolio" />
-    <meta name="author" content="Ridwan Farah" />
-    <title>Ridwan Farah | Portfolio</title>
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background-color: #f9f9f9; }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 20px; }
-        header { background: linear-gradient(135deg, #2c3e50, #3498db); color: white; text-align: center; padding: 40px 0; }
-        header h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        nav { background-color: #2c3e50; position: sticky; top: 0; z-index: 100; }
-        nav ul { list-style: none; text-align: center; padding: 15px 0; }
-        nav ul li { display: inline-block; margin-right: 20px; }
-        nav ul li:last-child { margin-right: 0; }
-        nav a { color: white; text-decoration: none; font-weight: 500; padding: 5px 10px; border-radius: 4px; transition: background-color 0.3s; }
-        nav a:hover { background-color: #3498db; }
-        section { padding: 40px 0; border-bottom: 1px solid #eee; }
-        section h2 { text-align: center; margin-bottom: 30px; color: #2c3e50; font-size: 2rem; }
-        #profile { text-align: center; }
-        #profile img { border: 5px solid #3498db; border-radius: 50%; margin-bottom: 20px; transition: transform 0.3s; }
-        #profile img:hover { transform: scale(1.05); }
-        .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; list-style: none; }
-        .skills li { background-color: #3498db; color: white; padding: 8px 14px; border-radius: 18px; font-weight: 500; }
-        .project { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
-        .project h3 { color: #2c3e50; margin-bottom: 10px; }
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
-        .gallery img, .gallery video { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); transition: transform 0.3s, box-shadow 0.3s; }
-        .gallery img:hover, .gallery video:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        .video-container { grid-column: span 2; }
-        video { height: 300px; }
-        #contact { text-align: center; }
-        #contact a { color: #3498db; text-decoration: none; }
-        #contact a:hover { text-decoration: underline; }
-        footer { background-color: #2c3e50; color: white; text-align: center; padding: 20px 0; }
-        #topBtn { display: none; position: fixed; bottom: 30px; right: 20px; z-index: 99; font-size: 18px; border: none; outline: none; background-color: #3498db; color: white; cursor: pointer; padding: 12px 16px; border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
-        #topBtn:hover { background-color: #2c3e50; }
-        #preloader { background: white url('img/loader.gif') no-repeat center center; height: 100vh; width: 100%; position: fixed; z-index: 9999; }
-        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
-        .timeline::after { content: ''; position: absolute; width: 2px; background-color: #3498db; top: 0; bottom: 0; left: 50%; margin-left: -1px; }
-        .timeline-item { padding: 10px 40px; position: relative; width: 50%; box-sizing: border-box; }
-        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; background-color: white; border: 4px solid #3498db; border-radius: 50%; top: 15px; z-index: 1; }
-        .left { left: 0; }
-        .right { left: 50%; }
-        .left::after { right: -10px; }
-        .right::after { left: -10px; }
-        .timeline-content { padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .testimonials { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-        .testimonial { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); max-width: 300px; text-align: center; }
-        .testimonial img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; }
-        .testimonial .rating { color: #f39c12; margin-top: 10px; }
-        .language-switcher { text-align: right; padding: 10px; }
-        .language-switcher button { background: none; border: none; color: white; cursor: pointer; margin: 0 5px; }
-        .language-switcher button.active { font-weight: bold; text-decoration: underline; }
-        .social-icons a { color: #2c3e50; margin: 0 10px; font-size: 1.5rem; transition: color 0.3s; }
-        .social-icons a:hover { color: #3498db; }
-        .stats { display: flex; justify-content: space-around; flex-wrap: wrap; margin: 30px 0; }
-        .stat-item { text-align: center; margin: 10px; }
-        .stat-number { font-size: 2.5rem; font-weight: bold; color: #3498db; }
-        @media (max-width: 768px) {
-            .gallery { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-            .video-container { grid-column: span 1; }
-            video { height: 200px; }
-            .timeline::after { left: 18px; }
-            .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; }
-            .timeline-item::after { left: 10px; }
-            .right { left: 0; }
-            .left::after, .right::after { right: auto; }
-        }
-        #messageBox { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background-color: #4CAF50; color: white; padding: 15px 20px; border-radius: 5px; z-index: 1000; display: none; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); font-size: 1rem; text-align: center; }
-        /* ==== Resume section styling ==== */
-        #resume .resume-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; }
-        #resume .card { background: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); padding: 18px; }
-        #resume h3 { color: #2c3e50; margin-bottom: 10px; }
-        #resume .list { margin-left: 18px; }
-        #resume .chip { display: inline-block; margin: 5px 6px 0 0; padding: 6px 10px; border-radius: 14px; background: #e8f3fc; font-size: 0.9rem; }
-        @media (max-width: 900px){ #resume .resume-grid { grid-template-columns: 1fr; } }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ridwan Farah – Electrical & Electronics Engineer portfolio: projects, skills, resume, contact." />
+  <meta name="keywords" content="Ridwan Farah, Electrical Engineer, Electronics, IoT, AI, Portfolio" />
+  <meta name="author" content="Ridwan Farah" />
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <title>Ridwan Farah | Portfolio</title>
+  <style>
+    /* Base */
+    *{box-sizing:border-box}
+    :root{
+      --dark:#2c3e50;
+      --brand:#3498db;
+      --accent:#e74c3c;
+      --bg:#f9f9f9;
+      --muted:#666;
+      --light:#ecf0f1;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;color:#333;background:var(--bg)}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    .container{width:90%;max-width:1200px;margin:0 auto;padding:20px}
+
+    /* Header */
+    header{background:linear-gradient(135deg,var(--dark),var(--brand));color:#fff}
+    header .topbar{display:flex;justify-content:flex-end}
+    header h1{font-size:clamp(1.8rem,3.5vw,2.6rem);margin:8px 0 6px}
+    header p{margin:0 0 8px;color:#e9f4ff}
+
+    /* Language switcher */
+    .language-switcher{display:flex;gap:8px}
+    .language-switcher button{background:none;border:1px solid rgba(255,255,255,.35);color:#fff;padding:6px 10px;border-radius:16px;cursor:pointer}
+    .language-switcher button.active{background:#fff;color:#0d1b2a;font-weight:600}
+
+    /* Nav */
+    nav{background:var(--dark);position:sticky;top:0;z-index:100}
+    nav ul{list-style:none;margin:0;padding:12px 0;display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+    nav a{color:#fff;text-decoration:none;font-weight:500;padding:6px 10px;border-radius:6px}
+    nav a:is(:hover,:focus){background:var(--brand)}
+    nav a[aria-current="true"]{background:var(--brand)}
+
+    /* Sections */
+    section{padding:48px 0;border-bottom:1px solid #eee;opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease;scroll-margin-top:82px}
+    section.revealed{opacity:1;transform:none}
+    section h2{text-align:center;margin:0 0 26px;color:var(--dark);font-size:clamp(1.4rem,2.6vw,2rem)}
+
+    /* Profile */
+    #profile{text-align:center}
+    #profile img{border:5px solid var(--brand);border-radius:50%;margin:0 auto 14px;transition:transform .3s}
+    #profile img:hover{transform:scale(1.05)}
+    .stats{display:flex;justify-content:space-around;flex-wrap:wrap;margin:26px 0;gap:18px}
+    .stat-item{text-align:center}
+    .stat-number{font-size:2.2rem;font-weight:800;color:var(--brand)}
+
+    /* Skills */
+    .skills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;list-style:none;padding:0}
+    .skills li{background:var(--brand);color:#fff;padding:8px 14px;border-radius:18px;font-weight:500}
+
+    /* Projects */
+    .project{background:#fff;padding:20px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.08);margin-bottom:18px}
+    .project h3{color:var(--dark);margin:0 0 8px}
+
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+      border-top: 4px solid var(--brand);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-icon {
+      font-size: 3rem;
+      color: var(--brand);
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    /* Gallery */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+    .gallery-grid img{width:100%;height:200px;object-fit:cover;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,.16);transition:transform .3s,box-shadow .3s}
+    .gallery-grid img:hover{transform:scale(1.03);box-shadow:0 5px 15px rgba(0,0,0,.28)}
+
+    /* Videos */
+    #videos{background:#f0f0f0}
+    .videos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+    .video-item{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    .video-item video{width:100%;height:auto;display:block}
+    .video-item .caption{padding:14px;text-align:center}
+
+    /* Timeline */
+    .timeline{position:relative;max-width:920px;margin:0 auto}
+    .timeline::after{content:"";position:absolute;width:2px;background:var(--brand);top:0;bottom:0;left:50%;transform:translateX(-1px)}
+    .timeline-item{padding:10px 40px;position:relative;width:50%}
+    .timeline-item::after{content:"";position:absolute;width:20px;height:20px;background:#fff;border:4px solid var(--brand);border-radius:50%;top:15px;z-index:1}
+    .left{left:0}
+    .right{left:50%}
+    .left::after{right:-10px}
+    .right::after{left:-10px}
+    .timeline-content{padding:18px;background:#fff;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+
+    /* Testimonials */
+    .testimonials{display:flex;flex-wrap:wrap;justify-content:center;gap:18px}
+    .testimonial{background:#fff;padding:18px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.06);max-width:320px;text-align:center}
+    .testimonial img{width:64px;height:64px;border-radius:50%;object-fit:cover;margin:0 auto 10px}
+    .testimonial .rating{color:#f39c12;margin-top:8px}
+
+    /* Resume */
+    #resume .resume-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:20px}
+    #resume .card{background:#fff;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.06);padding:18px}
+    #resume h3{color:var(--dark);margin:0 0 8px}
+    #resume .list{margin-left:18px}
+    #resume .chip{display:inline-block;margin:5px 6px 0 0;padding:6px 10px;border-radius:14px;background:#e8f3fc;font-size:.9rem}
+
+    /* Contact */
+    #contact{text-align:center}
+    #contact a{color:var(--brand)}
+    #contact a:hover{text-decoration:underline}
+    .social-icons a{color:var(--dark);margin:0 10px;font-size:1.4rem}
+    .social-icons a:hover{color:var(--brand)}
+    
+    /* Contact Info Styles */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      text-align: left;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      padding: 12px 15px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--brand);
+    }
+    
+    .contact-item:hover {
+      background-color: #f5f9ff;
+      transform: translateX(5px);
+    }
+    
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--brand);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      font-size: 18px;
+    }
+    
+    .contact-details {
+      flex: 1;
+    }
+    
+    .contact-details a {
+      color: var(--dark);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .contact-details a:hover {
+      color: var(--brand);
+    }
+    
+    .contact-label {
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer{background:var(--dark);color:#fff;text-align:center;padding:22px 0}
+    footer .social-icons a {color:#fff; margin:0 8px; font-size:1.2rem}
+
+    /* Buttons */
+    .btn{background:var(--brand);color:#fff;padding:10px 18px;border-radius:8px;display:inline-block;text-decoration:none}
+    .btn:hover{filter:brightness(.95)}
+    
+    .btn-accent {
+      background: var(--accent);
+    }
+    
+    .btn-accent:hover {
+      background: #c0392b;
+    }
+
+    /* Back-to-top */
+    #topBtn{display:none;position:fixed;bottom:24px;right:18px;z-index:99;font-size:18px;border:none;outline:none;background:var(--brand);color:#fff;cursor:pointer;padding:12px 16px;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+    #topBtn:hover{background:var(--dark)}
+
+    /* Preloader */
+    #preloader{background:#fff url('img/loader.gif') no-repeat center center;position:fixed;inset:0;z-index:9999}
+
+    /* Responsive */
+    @media (max-width:768px){
+      .timeline::after{left:18px}
+      .timeline-item{width:100%;padding-left:50px;padding-right:10px}
+      .timeline-item::after{left:10px}
+      .right{left:0}
+      #resume .resume-grid{grid-template-columns:1fr}
+      .contact-item {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+      }
+      .contact-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div id="preloader"></div>
-    <div id="messageBox"></div>
+  <a href="#profile" class="visually-hidden" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden">Skip to content</a>
 
-    <header>
-        <div class="container">
-            <div class="language-switcher">
-                <button class="active">EN</button>
-                <button>SO</button>
+  <div id="preloader" aria-hidden="true"></div>
+  <div id="messageBox" role="status" aria-live="polite" style="position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#4CAF50;color:#fff;padding:12px 16px;border-radius:6px;z-index:1000;display:none;box-shadow:0 4px 8px rgba(0,0,0,.2)"></div>
+
+  <header>
+    <div class="container">
+      <div class="topbar">
+        <div class="language-switcher" aria-label="Language switcher">
+          <button data-lang="en" class="active" aria-pressed="true">EN</button>
+          <button data-lang="so" aria-pressed="false">SO</button>
+        </div>
+      </div>
+      <h1 data-i18n="name">Ridwan Farah</h1>
+      <p data-i18n="title">Electrical & Electronics Engineer | AI Developer</p>
+      <div style="text-align: center; margin-top: 20px;">
+        <a href="#contact" class="btn">Get In Touch</a>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="Primary">
+    <div class="container">
+      <ul>
+        <li><a href="#profile" data-i18n="nav_profile">Profile</a></li>
+        <li><a href="#services" data-i18n="nav_services">Services</a></li>
+        <li><a href="#experience" data-i18n="nav_experience">Experience</a></li>
+        <li><a href="#education" data-i18n="nav_education">Education</a></li>
+        <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
+        <li><a href="#projects" data-i18n="nav_projects">Projects</a></li>
+        <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
+        <li><a href="#videos" data-i18n="nav_videos">Videos</a></li>
+        <li><a href="#testimonials" data-i18n="nav_testimonials">Testimonials</a></li>
+        <li><a href="#resume" data-i18n="nav_resume">Resume</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section id="profile" class="revealed">
+      <div class="container">
+        <h2 data-i18n="section_profile">Profile</h2>
+        <a href="img/profile.jpg" target="_blank" rel="noopener">
+          <img src="img/profile.jpg" width="200" height="" alt="Portrait of Ridwan Farah" onerror="this.alt='Profile photo unavailable'" />
+        </a>
+        <p data-i18n="profile_text">I hold a Bachelor's Degree in Electrical and Electronics Engineering with hands-on experience in designing, analyzing, and retrofitting electrical systems. My passion includes Embedded Systems, Electric Vehicles, and AI for Engineering. I'm dedicated to creating innovative solutions that bridge the gap between hardware and software.</p>
+        <div class="stats" aria-label="Quick stats">
+          <div class="stat-item"><div class="stat-number">3+</div><div data-i18n="stat_years">Years Experience</div></div>
+          <div class="stat-item"><div class="stat-number">10+</div><div data-i18n="stat_projects">Projects Completed</div></div>
+          <div class="stat-item"><div class="stat-number">10+</div><div data-i18n="stat_clients">Happy Clients</div></div>
+          <div class="stat-item"><div class="stat-number">3</div><div data-i18n="stat_awards">Awards Won</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+      <div class="container">
+        <h2 class="section-title" data-i18n="section_services">Services I Provide</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-laptop-code"></i>
             </div>
-            <h1>Ridwan Farah</h1>
-            <p>Electrical & Electronics Engineer</p>
-        </div>
-    </header>
-
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#profile">Profile</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section id="profile">
-        <div class="container">
-            <h2>Profile</h2>
-            <a href="img/profile.jpg" target="_blank">
-                <img src="img/profile.jpg" width="150" height="150" alt="Ridwan Farah" onerror="console.error('Error loading profile image: img/profile.jpg');" />
-            </a>
-            <p>I hold a Bachelor's Degree in Electrical and Electronics Engineering with hands-on experience in designing, analyzing, and retrofitting electrical systems. My passion includes Embedded Systems, Electric Vehicles, and AI for Engineering. I'm dedicated to creating innovative solutions that bridge the gap between hardware and software.</p>
-            <div class="stats">
-                <div class="stat-item"><div class="stat-number">3+</div><div>Years Experience</div></div>
-                <div class="stat-item"><div class="stat-number">10+</div><div>Projects Completed</div></div>
-                <div class="stat-item"><div class="stat-number">10+</div><div>Happy Clients</div></div>
-                <div class="stat-item"><div class="stat-number">3</div><div>Awards Won</div></div>
+            <h3 data-i18n="service_web_title">Professional Websites</h3>
+            <p data-i18n="service_web_desc">Fast, responsive, and user-friendly websites for businesses and individuals. Built with modern technologies and optimized for performance.</p>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-mobile-alt"></i>
             </div>
+            <h3 data-i18n="service_apps_title">Custom Applications</h3>
+            <p data-i18n="service_apps_desc">Scalable mobile and desktop applications with modern features tailored to your specific needs and requirements.</p>
+          </div>
+          
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h3 data-i18n="service_ai_title">AI-Powered Chatbots</h3>
+            <p data-i18n="service_ai_desc">Smart conversational assistants that enhance customer support, improve sales, and automate business processes.</p>
+          </div>
         </div>
+      </div>
     </section>
 
     <section id="experience">
-        <div class="container">
-            <h2>Work Experience</h2>
-            <div class="timeline">
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <h3>Auto Engineer (Self-employed)</h3>
-                        <h4>Freelance</h4>
-                        <p>Oct 2024 – May 2025</p>
-                        <ul>
-                            <li>Automotive diagnostics (ECU/OBD-II) and electrical fault tracing.</li>
-                            <li>Retrofits and integration for modern vehicle electronics.</li>
-                            <li>Delivered reliable solutions with quick turnaround times.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <h3>Assistant Manager</h3>
-                        <h4>Mare Bianco, Lefkoşa</h4>
-                        <p>Oct 2022 – Oct 2024</p>
-                        <ul>
-                            <li>Coordinated technical operations and maintenance schedules.</li>
-                            <li>Managed small engineering tasks and supplier relations.</li>
-                            <li>Improved process efficiency and documentation.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <h3>Engineering Intern</h3>
-                        <h4>AutoElectro Kenya</h4>
-                        <p>2018 – 2019</p>
-                        <ul>
-                            <li>Vehicle electrical diagnostics and repairs.</li>
-                            <li>Introduction to ECU programming and troubleshooting.</li>
-                            <li>Assisted with wiring harness design projects.</li>
-                        </ul>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 data-i18n="section_experience">Work Experience</h2>
+        <div class="timeline">
+          <div class="timeline-item left">
+            <div class="timeline-content">
+              <h3>Assistant Manager</h3>
+              <h4>Mare Bianco, Lefkoşa</h4>
+              <p>Oct 2022 – Oct 2024</p>
+              <p>Contact: <a href="mailto:contact@marebiancoinvestment.com">contact@marebiancoinvestment.com</a></p>
+              <ul>
+                <li>Coordinated technical operations and maintenance schedules.</li>
+                <li>Managed engineering tasks and supplier relations.</li>
+                <li>Improved process efficiency and documentation.</li>
+              </ul>
             </div>
+          </div>
+          <div class="timeline-item right">
+            <div class="timeline-content">
+              <h3>Founder & Developer</h3>
+              <h4>ChatSahan Somali AI Assistant</h4>
+              <p>2024 – Present</p>
+              <p>Designed and developed an AI-powered Somali-language assistant to enhance access to educational and informational resources in local communities. Managed the full project lifecycle, including backend and frontend development, API integration, and user testing.</p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <section id="education">
-        <div class="container">
-            <h2>Education & Training</h2>
-            <div class="timeline">
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <h3>BSc Electrical & Electronics Engineering</h3>
-                        <h4>Canadian University of Bangladesh (Dhaka)</h4>
-                        <p>Jan 2017 – Jun 2021</p>
-                        <p>Focus: Power Systems, Control, and Embedded Systems.</p>
-                        <p><a href="https://www.cub.edu.bd/" target="_blank" rel="noopener">University Website</a></p>
-                    </div>
-                </div>
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <h3>Secondary Education</h3>
-                        <h4>26 June Secondary School, Hargeisa</h4>
-                        <p>Aug 2012 – Aug 2016</p>
-                        <p><a href="http://www.slnecb.org/" target="_blank" rel="noopener">Exam Board Website</a></p>
-                    </div>
-                </div>
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <h3>Workshops & Short Courses</h3>
-                        <ul class="list">
-                            <li>Workshop for Mobile Games & Apps Development — Dec 2017, CUB (Dhaka)</li>
-                            <li>Workshop on Web Development — Oct 2019, CUB (Dhaka)</li>
-                            <li>Workshop on Graphic Design — Oct 2019, CUB (Dhaka)</li>
-                            <li>Workshop on Basic Arduino — Feb 2020, CUB (Dhaka)</li>
-                        </ul>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 data-i18n="section_education">Education & Training</h2>
+        <div class="timeline">
+          <div class="timeline-item left">
+            <div class="timeline-content">
+              <h3>BSc Electrical & Electronics Engineering</h3>
+              <h4>Canadian University of Bangladesh (Dhaka)</h4>
+              <p>Jan 2017 – Jun 2021</p>
+              <p>Focus: Power Systems, Control, and Embedded Systems.</p>
+              <p><a href="https://www.cub.edu.bd/" target="_blank" rel="noopener">University Website</a></p>
             </div>
+          </div>
+          <div class="timeline-item right">
+            <div class="timeline-content">
+              <h3>Secondary Education</h3>
+              <h4>26 June Secondary School, Hargeisa</h4>
+              <p>Aug 2012 – Aug 2016</p>
+              <p><a href="http://www.slnecb.org/" target="_blank" rel="noopener">Exam Board Website</a></p>
+            </div>
+          </div>
+          <div class="timeline-item left">
+            <div class="timeline-content">
+              <h3>Workshops & Short Courses</h3>
+              <ul class="list">
+                <li>Workshop for Mobile Games & Apps Development — Dec 2017, CUB (Dhaka)</li>
+                <li>Workshop on Web Development — Oct 2019, CUB (Dhaka)</li>
+                <li>Workshop on Graphic Design — Oct 2019, CUB (Dhaka)</li>
+                <li>Workshop on Basic Arduino — Feb 2020, CUB (Dhaka)</li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <section id="skills">
-        <div class="container">
-            <h2>Skills</h2>
-            <ul class="skills">
-                <li>Embedded C / Arduino</li><li>Python</li><li>MATLAB / Simulink</li>
-                <li>Auto Electrical Systems</li><li>ECU Diagnostics</li><li>OBD-II</li>
-                <li>PCB Design</li><li>IoT Systems (ESP8266/MQTT)</li><li>Machine Learning (for Engineers)</li>
-                <li>Power Systems</li><li>Renewable Energy</li><li>Project Management</li>
-                <li>AutoCAD Electrical</li><li>PLC / SCADA</li>
-                <li>PVsyst</li><li>HelioScope</li>
-                <li>MS Office (Word, Excel, PowerPoint)</li>
-                <li>Computer Hardware & Software</li>
-                <li>HTML, CSS, JavaScript</li>
-            </ul>
-        </div>
+      <div class="container">
+        <h2 data-i18n="section_skills">Skills</h2>
+        <ul class="skills" aria-label="Skill list">
+          <li>Embedded C / Arduino</li><li>Python</li><li>MATLAB / Simulink</li>
+          <li>Auto Electrical Systems</li><li>ECU Diagnostics</li><li>OBD-II</li>
+          <li>PCB Design</li><li>IoT Systems (ESP8266/MQTT)</li><li>Machine Learning (for Engineers)</li>
+          <li>Power Systems</li><li>Renewable Energy</li><li>Project Management</li>
+          <li>AutoCAD Electrical</li><li>PLC / SCADA</li>
+          <li>PVsyst</li><li>HelioScope</li>
+          <li>MS Office</li>
+          <li>Computer Hardware & Software</li>
+          <li>HTML, CSS, JavaScript</li>
+        </ul>
+      </div>
     </section>
 
     <section id="projects">
-        <div class="container">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>Vehicle ECU Diagnostic App</h3>
-                <p>Built a diagnostic tool for vehicle ECUs using Arduino and Bluetooth to read and clear fault codes. The system interfaces with OBD-II ports and provides real-time data visualization on a mobile app.</p>
-                <p><strong>Technologies:</strong> Arduino, Bluetooth LE, Android, OBD-II</p>
-            </div>
-            <div class="project">
-                <h3>Smart Home IoT System</h3>
-                <p>Designed a smart home prototype using NodeMCU and sensors for automation. Features energy monitoring, security, and remote control via a web dashboard.</p>
-                <p><strong>Technologies:</strong> ESP8266, MQTT, Firebase, JavaScript</p>
-            </div>
-            <div class="project">
-                <h3>EV Battery Management System (BMS)</h3>
-                <p>Prototype BMS for EV applications with STM32. Monitors cell voltages & temperatures and implements balancing algorithms to extend battery life.</p>
-                <p><strong>Technologies:</strong> STM32, CAN Bus, Li-ion, Embedded C</p>
-            </div>
-            <div class="project">
-                <h3>Solar-Powered Water Pumping System</h3>
-                <p>Off-grid solar water pumping solution for a rural community, reducing diesel generator usage by ~90%.</p>
-                <p><strong>Technologies:</strong> Solar PV, Pump Controllers, Energy Storage</p>
-            </div>
-        </div>
+      <div class="container">
+        <h2 data-i18n="section_projects">Projects</h2>
+        <article class="project">
+          <h3>ChatSahan Somali AI Assistant</h3>
+          <p>AI-powered Somali-language assistant to enhance access to educational and informational resources. Managed full lifecycle: backend, frontend, API integration, user testing.</p>
+          <p><strong>Technologies:</strong> Python, AI/NLP, API Integration, Web</p>
+        </article>
+        <article class="project">
+          <h3>Vehicle ECU Diagnostic App</h3>
+          <p>Arduino + Bluetooth app to read/clear fault codes via OBD-II and visualize realtime data.</p>
+          <p><strong>Technologies:</strong> Arduino, Bluetooth LE, Android, OBD-II</p>
+        </article>
+        <article class="project">
+          <h3>Smart Home IoT System</h3>
+          <p>NodeMCU + sensors for automation. Energy monitoring, security, remote control dashboard.</p>
+          <p><strong>Technologies:</strong> ESP8266, MQTT, Firebase, JavaScript</p>
+        </article>
+        <article class="project">
+          <h3>EV Battery Management System (BMS)</h3>
+          <p>Prototype BMS with STM32: cell voltage & temperature monitoring and balancing algorithms.</p>
+          <p><strong>Technologies:</strong> STM32, CAN Bus, Li-ion, Embedded C</p>
+        </article>
+        <article class="project">
+          <h3>Solar-Powered Water Pumping</h3>
+          <p>Off-grid solar pumping for rural community, cutting diesel use by ~90%.</p>
+          <p><strong>Technologies:</strong> Solar PV, Pump Controllers, Storage</p>
+        </article>
+        
+        <!-- NEW PROJECTS -->
+        <article class="project">
+          <h3>Graphic Design Journey</h3>
+          <p>I started my graphic design journey in 2022, creating simple designs for local clients who needed visuals for their shops and events. What began as a hobby soon turned into a passion – helping people bring their ideas to life through creative and eye-catching designs. My focus is on making designs that are not only beautiful but also meaningful and professional.</p>
+          <p><strong>Technologies/Tools:</strong> Adobe Photoshop, Illustrator, Canva</p>
+        </article>
+
+        <article class="project">
+          <h3>Auto Electrical Technician (On-call/Freelance)</h3>
+          <p>Worked in multiple auto repair shops specializing in electrical diagnostics, wiring, lighting, battery systems, and ECU programming for modern vehicles. Delivered high-quality results with video evidence of completed projects.</p>
+          <p><strong>Technologies/Tools:</strong> Multimeter, OBD-II Scanner, ECU Programming Tools, Wiring Systems</p>
+        </article>
+        <!-- END NEW PROJECTS -->
+      </div>
     </section>
 
     <section id="gallery">
-        <div class="container">
-            <h2>My Gallery</h2>
-            <div class="gallery">
-                <img src="img/pic1.jpg" alt="Project 1" onerror="console.error('Error loading image: img/pic1.jpg');" />
-                <img src="img/pic2.jpg" alt="Project 2" onerror="console.error('Error loading image: img/pic2.jpg');" />
-                <img src="img/pic3.jpg" alt="Workshop" onerror="console.error('Error loading image: img/pic3.jpg');" />
-                <img src="img/pic4.jpg" alt="Circuit Design" onerror="console.error('Error loading image: img/pic4.jpg');" />
-                <img src="img/pic5.jpg" alt="Team Project" onerror="console.error('Error loading image: img/pic5.jpg');" />
-                <img src="img/pic6.jpg" alt="Embedded System" onerror="console.error('Error loading image: img/pic6.jpg');" />
-                <img src="img/pic7.jpg" alt="Electrical Panel" onerror="console.error('Error loading image: img/pic7.jpg');" />
-                <img src="img/pic8.jpg" alt="Microcontroller" onerror="console.error('Error loading image: img/pic8.jpg');" />
-                <div class="video-container">
-                    <video controls poster="img/video-thumbnail.jpg" onerror="this.onerror=null; this.poster='https://placehold.co/600x300/CCCCCC/000000?text=Video+Unavailable'; console.error('Error loading video or poster.');">
-                        <source src="vid/project_demo.mp4" type="video/mp4" onerror="console.error('Error loading video source: vid/project_demo.mp4');" />
-                    </video>
-                </div>
-                <img src="img/pic9.jpg" alt="Final Project" onerror="console.error('Error loading image: img/pic9.jpg');" />
-                <img src="img/pic10.jpg" alt="Award Ceremony" onerror="console.error('Error loading image: img/pic10.jpg');" />
-            </div>
-        </div>
+      <div class="container">
+        <h2 class="section-title" data-i18n="section_gallery">Gallery</h2>
+        <div class="gallery-grid" id="galleryGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Videos section -->
+    <section id="videos">
+      <div class="container">
+        <h2 data-i18n="section_videos">Videos</h2>
+        <div class="videos-grid" id="videosGrid" aria-live="polite"></div>
+      </div>
     </section>
 
     <section id="testimonials">
-        <div class="container">
-            <h2>Testimonials</h2>
-            <div class="testimonials">
-                <div class="testimonial">
-                    <img src="img/client1.jpg" alt="Client 1" onerror="console.error('Error loading client image: img/client1.jpg');" />
-                    <h3>Ahmed Mohamed</h3>
-                    <p>CEO, AutoTech Solutions</p>
-                    <p>"Ridwan's work on our vehicle diagnostics system was exceptional. He delivered beyond our expectations and provided excellent after-support."</p>
-                    <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                </div>
-                <div class="testimonial">
-                    <img src="img/client2.jpg" alt="Client 2" onerror="console.error('Error loading client image: img/client2.jpg');" />
-                    <h3>Fatuma Abdi</h3>
-                    <p>Engineering Manager, PowerGrid</p>
-                    <p>"Working with Ridwan on our renewable energy projects was a pleasure. His technical skills and problem-solving abilities are top-notch."</p>
-                    <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                </div>
-                <div class="testimonial">
-                    <img src="img/client3.jpg" alt="Client 3" onerror="console.error('Error loading client image: img/client3.jpg');" />
-                    <h3>John Maina</h3>
-                    <p>Director, Smart Homes Ltd.</p>
-                    <p>"The IoT system Ridwan developed for us has been running flawlessly for 2 years. His attention to detail is remarkable."</p>
-                    <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                </div>
-            </div>
+      <div class="container">
+        <h2 data-i18n="section_testimonials">Testimonials</h2>
+        <div class="testimonials">
+          <div class="testimonial">
+            <img src="img/client1.jpg" alt="Ahmed Mohamed" onerror="this.alt='Client photo unavailable'" />
+            <h3>Ahmed Mohamed</h3>
+            <p>CEO, AutoTech Solutions</p>
+            <p>"Ridwan's work on our vehicle diagnostics system was exceptional. He delivered beyond our expectations and provided excellent after-support."</p>
+            <div class="rating" aria-label="5 out of 5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
+          <div class="testimonial">
+            <img src="img/client2.jpg" alt="Fatuma Abdi" onerror="this.alt='Client photo unavailable'" />
+            <h3>Fatuma Abdi</h3>
+            <p>Engineering Manager, PowerGrid</p>
+            <p>"Working with Ridwan on our renewable energy projects was a pleasure. His technical skills and problem-solving abilities are top-notch."</p>
+            <div class="rating" aria-label="4.5 out of 5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          </div>
+          <div class="testimonial">
+            <img src="img/client3.jpg" alt="John Maina" onerror="this.alt='Client photo unavailable'" />
+            <h3>John Maina</h3>
+            <p>Director, Smart Homes Ltd.</p>
+            <p>"The IoT system Ridwan developed for us has been running flawlessly for 2 years. His attention to detail is remarkable."</p>
+            <div class="rating" aria-label="5 out of 5"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- ===== NEW: Resume Section (integrated CV) ===== -->
     <section id="resume">
-        <div class="container">
-            <h2>Resume</h2>
-            <div class="resume-grid">
-                <div class="card">
-                    <h3>Professional Summary</h3>
-                    <p>Electrical Engineer with hands-on experience in automotive diagnostics, ECU systems, and vehicle electronics. Skilled across the full project lifecycle—from concept and design to testing, implementation, and optimization—while maintaining a strong focus on safety, efficiency, and innovation.</p>
-                </div>
-                <div class="card">
-                    <h3>Languages</h3>
-                    <div class="chip">Somali (Native)</div>
-                    <div class="chip">English</div>
-                    <div class="chip">Bengali</div>
-                    <div class="chip">Turkish (basic)</div>
-                    <h3 style="margin-top:16px;">Hobbies</h3>
-                    <div class="chip">Riding</div>
-                    <div class="chip">Writing</div>
-                    <div class="chip">Listening</div>
-                    <div class="chip">Learning</div>
-                </div>
-                <div class="card" style="grid-column: 1 / -1;">
-                    <h3>Key Skills</h3>
-                    <div class="chip">Embedded C / Arduino</div>
-                    <div class="chip">Python</div>
-                    <div class="chip">MATLAB / Simulink</div>
-                    <div class="chip">Auto Electrical</div>
-                    <div class="chip">ECU Diagnostics (OBD-II)</div>
-                    <div class="chip">PCB Design</div>
-                    <div class="chip">IoT (ESP8266, MQTT)</div>
-                    <div class="chip">Machine Learning</div>
-                    <div class="chip">Power Systems</div>
-                    <div class="chip">Renewable Energy</div>
-                    <div class="chip">Project Management</div>
-                    <div class="chip">AutoCAD Electrical</div>
-                    <div class="chip">PLC / SCADA</div>
-                    <div class="chip">PVsyst</div>
-                    <div class="chip">HelioScope</div>
-                    <div class="chip">MS Office</div>
-                    <div class="chip">Computer Hardware/Software</div>
-                    <div class="chip">HTML, CSS, JS</div>
-                </div>
-                <div class="card">
-                    <h3>Experience</h3>
-                    <ul class="list">
-                        <li><strong>Auto Engineer (Self-employed)</strong> — Oct 2024 – May 2025<br />Automotive diagnostics, ECU systems, and vehicle electronics services for clients.</li>
-                        <li><strong>Assistant Manager, Mare Bianco (Lefkoşa)</strong> — Oct 2022 – Oct 2024<br />Coordinated maintenance and technical operations; improved efficiency and documentation.</li>
-                        <li><strong>Engineering Intern, AutoElectro Kenya</strong> — 2018 – 2019<br />Electrical diagnostics, ECU basics, and wiring harness assistance.</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>Education & Workshops</h3>
-                    <ul class="list">
-                        <li><strong>BSc Electrical & Electronics Engineering</strong> — Jan 2017 – Jun 2021, Canadian University of Bangladesh (Dhaka)</li>
-                        <li><strong>Secondary Education</strong> — Aug 2012 – Aug 2016, 26 June Secondary School, Hargeisa</li>
-                        <li>Workshop: Mobile Games & Apps Development — Dec 2017 (CUB)</li>
-                        <li>Workshop: Web Development — Oct 2019 (CUB)</li>
-                        <li>Workshop: Graphic Design — Oct 2019 (CUB)</li>
-                        <li>Workshop: Basic Arduino — Feb 2020 (CUB)</li>
-                    </ul>
-                </div>
-            </div>
-            <div style="text-align:center; margin-top:18px;">
-                <a href="docs/Ridwan_Farah_CV.pdf" download class="btn" style="background:#3498db;color:#fff;padding:10px 18px;border-radius:6px;display:inline-block;">Download My CV (PDF)</a>
-            </div>
+      <div class="container">
+        <h2 data-i18n="section_resume">Resume</h2>
+        <div class="resume-grid">
+          <div class="card">
+            <h3 data-i18n="resume_summary_h3">Professional Summary</h3>
+            <p data-i18n="resume_summary_p">Electrical Engineer with hands-on experience in automotive diagnostics, ECU systems, and vehicle electronics. Skilled across the full project lifecycle—from concept and design to testing, implementation, and optimization—while maintaining a strong focus on safety, efficiency, and innovation.</p>
+          </div>
+          <div class="card">
+            <h3 data-i18n="resume_lang_h3">Languages</h3>
+            <div class="chip" data-i18n="lang_somali">Somali (Native)</div>
+            <div class="chip" data-i18n="lang_english">English</div>
+            <div class="chip" data-i18n="lang_bengali">Bengali</div>
+            <div class="chip" data-i18n="lang_turkish">Turkish (basic)</div>
+            <h3 style="margin-top:16px" data-i18n="resume_hobbies_h3">Hobbies</h3>
+            <div class="chip" data-i18n="hobby_riding">Riding</div>
+            <div class="chip" data-i18n="hobby_writing">Writing</div>
+            <div class="chip" data-i18n="hobby_listening">Listening</div>
+            <div class="chip" data-i18n="hobby_learning">Learning</div>
+          </div>
+          <div class="card" style="grid-column:1 / -1">
+            <h3 data-i18n="resume_keyskills_h3">Key Skills</h3>
+            <div class="chip">Embedded C / Arduino</div>
+            <div class="chip">Python</div>
+            <div class="chip">MATLAB / Simulink</div>
+            <div class="chip">Auto Electrical</div>
+            <div class="chip">ECU Diagnostics (OBD-II)</div>
+            <div class="chip">PCB Design</div>
+            <div class="chip">IoT (ESP8266, MQTT)</div>
+            <div class="chip">Machine Learning</div>
+            <div class="chip">Power Systems</div>
+            <div class="chip">Renewable Energy</div>
+            <div class="chip">Project Management</div>
+            <div class="chip">AutoCAD Electrical</div>
+            <div class="chip">PLC / SCADA</div>
+            <div class="chip">PVsyst</div>
+            <div class="chip">HelioScope</div>
+            <div class="chip">MS Office</div>
+            <div class="chip">Computer Hardware/Software</div>
+            <div class="chip">HTML, CSS, JS</div>
+          </div>
+          <div class="card">
+            <h3 data-i18n="resume_experience_h3">Experience</h3>
+            <ul class="list">
+              <li><strong>Assistant Manager, Mare Bianco (Lefkoşa)</strong> — Oct 2022 – Oct 2024<br>Contact: <a href="mailto:contact@marebiancoinvestment.com">contact@marebiancoinvestment.com</a><br>Coordinated maintenance and technical operations; improved efficiency and documentation.</li>
+              <li><strong>Engineering Intern, AutoElectro Kenya</strong> — 2018 – 2019<br>Gacan ku haynta iyo dayactirka baabuurta. Ku takhasusay barnaamijyada iyo hagaajinta nidaamka ECU.</li>
+              <li><strong>Founder & Developer, ChatSahan Somali AI Assistant</strong> — 2024 – Present<br>Designed and developed an AI-powered Somali-language assistant for communities; managed backend, frontend, API integration, and testing.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 data-i18n="resume_edu_h3">Education & Workshops</h3>
+            <ul class="list">
+              <li><strong>BSc Electrical & Electronics Engineering</strong> — Jan 2017 – Jun 2021, Canadian University of Bangladesh (Dhaka)</li>
+              <li><strong>Secondary Education</strong> — Aug 2012 – Aug 2016, 26 June Secondary School, Hargeisa</li>
+              <li>Workshop: Mobile Games & Apps Development — Dec 2017 (CUB)</li>
+              <li>Workshop: Web Development — Oct 2019 (CUB)</li>
+              <li>Workshop: Graphic Design — Oct 2019 (CUB)</li>
+              <li>Workshop: Basic Arduino — Feb 2020 (CUB)</li>
+            </ul>
+          </div>
         </div>
+        <div style="text-align:center;margin-top:16px">
+          <a href="docs/Ridwan_Farah_CV.pdf" download class="btn" data-i18n="resume_download_btn">Download My CV (PDF)</a>
+        </div>
+      </div>
     </section>
 
     <section id="contact">
-        <div class="container">
-            <h2>Contact</h2>
-            <p>Email: <a href="mailto:Akiidonly12@example.com">Akiidonly12@example.com</a></p>
-            <p>GitHub: <a href="https://github.com/Ridwan1121" target="_blank">github.com/Ridwan1121</a></p>
-            <p>LinkedIn: <a href="https://linkedin.com/in/ridwan-farah" target="_blank">linkedin.com/in/ridwan-farah</a></p>
-            <p>Resume: <a href="docs/Ridwan_Farah_CV.pdf" download>Download My CV</a></p>
-            <div class="social-icons">
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <div class="container">
+        <h2 data-i18n="section_contact">
+          <i class="fas fa-envelope" style="margin-right: 15px; color: var(--brand);"></i>
+          Contact
+        </h2>
+        
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
             </div>
-            <p>Phone: +254 769605643</p>
-            <form id="contact-form" style="max-width: 500px; margin: 20px auto;">
-                <div style="margin-bottom: 15px;"><input type="text" placeholder="Your Name" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ddd;" /></div>
-                <div style="margin-bottom: 15px;"><input type="email" placeholder="Your Email" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ddd;" /></div>
-                <div style="margin-bottom: 15px;"><textarea placeholder="Your Message" rows="5" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ddd;"></textarea></div>
-                <button type="submit" style="background-color: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">Send Message</button>
-            </form>
+            <div class="contact-details">
+              <div class="contact-label">Email</div>
+              <a href="mailto:ridwan.farah@example.com">
+                <i class="fas fa-envelope" style="color: var(--brand);"></i>
+                ridwan.farah@example.com
+              </a>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-github"></i>
+            </div>
+            <div class="contact-details">
+              <div class="contact-label">GitHub</div>
+              <a href="https://github.com/Ridwan1121" target="_blank" rel="noopener">
+                <i class="fab fa-github" style="color: var(--dark);"></i>
+                github.com/Ridwan1121
+              </a>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin"></i>
+            </div>
+            <div class="contact-details">
+              <div class="contact-label">LinkedIn</div>
+              <a href="https://www.linkedin.com/in/ridwan-abdillahi-b1b522237" target="_blank" rel="noopener">
+                <i class="fab fa-linkedin" style="color: #0077b5;"></i>
+                linkedin.com/in/ridwan-abdillahi-b1b522237
+              </a>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="contact-details">
+              <div class="contact-label">Resume</div>
+              <a href="docs/Ridwan_Farah_CV.pdf" download>
+                <i class="fas fa-download" style="color: var(--accent);"></i>
+                Download My CV
+              </a>
+            </div>
+          </div>
+          
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <div class="contact-label">Phone</div>
+              <div>
+                <a href="tel:+254769605643">
+                  <i class="fas fa-phone" style="color: var(--muted);"></i>
+                  +254 769605643
+                </a>
+                <span style="margin: 0 10px; color: #ccc;">|</span>
+                <a href="tel:+252634008040">
+                  <i class="fas fa-phone" style="color: var(--muted);"></i>
+                  +252 634008040
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div class="social-icons" aria-label="Social links" style="margin: 30px 0;">
+          <a href="https://www.instagram.com/akeid26?igsh=MXY4OTY3aHRkZGphYw==&utm_source=ig_contact_invite" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://github.com/Ridwan1121" target="_blank" rel="noopener" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/ridwan-abdillahi-b1b522237" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:ridwan.farah@example.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </div>
+        
+        <form id="contact-form" style="max-width:520px;margin:18px auto" novalidate>
+          <div style="margin-bottom:12px">
+            <label class="visually-hidden" for="nameInput">Name</label>
+            <input id="nameInput" name="name" data-i18n-placeholder="form_name" type="text" placeholder="Your Name" required style="width:100%;padding:12px;border-radius:6px;border:1px solid #ddd;font-size:16px">
+          </div>
+          <div style="margin-bottom:12px">
+            <label class="visually-hidden" for="emailInput">Email</label>
+            <input id="emailInput" name="email" data-i18n-placeholder="form_email" type="email" placeholder="Your Email" required style="width:100%;padding:12px;border-radius:6px;border:1px solid #ddd;font-size:16px">
+          </div>
+          <div style="margin-bottom:12px">
+            <label class="visually-hidden" for="msgInput">Message</label>
+            <textarea id="msgInput" name="message" data-i18n-placeholder="form_message" placeholder="Your Message" rows="5" required style="width:100%;padding:12px;border-radius:6px;border:1px solid #ddd;font-size:16px"></textarea>
+          </div>
+          <button type="submit" class="btn" data-i18n="form_send" style="padding:12px 24px;font-size:16px">
+            <i class="fas fa-paper-plane" style="margin-right:8px"></i>Send Message
+          </button>
+        </form>
+      </div>
     </section>
+  </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Ridwan Farah. All rights reserved.</p>
-            <p>Designed with passion by Ridwan Farah</p>
-        </div>
-    </footer>
+  <footer>
+    <div class="container">
+      <div class="social-icons" aria-label="Social media links">
+        <a href="https://www.instagram.com/akeid26?igsh=MXY4OTY3aHRkZGphYw==&utm_source=ig_contact_invite" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://github.com/Ridwan1121" target="_blank" rel="noopener" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/ridwan-abdillahi-b1b522237" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:ridwan.farah@example.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+      <p>&copy; 2025 <span data-i18n="name">Ridwan Farah</span>. <span data-i18n="rights">All rights reserved.</span></p>
+      <p data-i18n="designed">Designed with passion by Ridwan Farah</p>
+    </div>
+  </footer>
 
-    <button onclick="topFunction()" id="topBtn" title="Go to top">↑</button>
+  <button id="topBtn" title="Go to top" aria-label="Back to top">↑</button>
 
-    <script>
-        function showMessage(message, duration = 3000) {
-            const messageBox = document.getElementById('messageBox');
-            messageBox.textContent = message;
-            messageBox.style.display = 'block';
-            setTimeout(() => { messageBox.style.display = 'none'; }, duration);
-        }
-        window.addEventListener('load', function () { document.getElementById('preloader').style.display = 'none'; });
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (!targetElement) return;
-                window.scrollTo({ top: targetElement.offsetTop - 70, behavior: 'smooth' });
-            });
+  <script>
+    // Utility: show toast message
+    function showMessage(message, duration = 3000) {
+      const box = document.getElementById('messageBox');
+      box.textContent = message;
+      box.style.display = 'block';
+      setTimeout(() => { box.style.display = 'none'; }, duration);
+    }
+
+    // Preloader hide
+    window.addEventListener('load', () => {
+      const pre = document.getElementById('preloader');
+      if (pre) pre.style.display = 'none';
+    });
+
+    // Reveal on scroll
+    const revealObserver = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) entry.target.classList.add('revealed');
+      }
+    }, { threshold: 0.15 });
+    document.querySelectorAll('section').forEach(sec => {
+      if (!sec.classList.contains('revealed')) revealObserver.observe(sec);
+    });
+
+    // Back-to-top visibility + active nav highlighting
+    const topBtn = document.getElementById('topBtn');
+    const sections = [...document.querySelectorAll('main section')];
+    const navLinks = [...document.querySelectorAll('nav a')];
+
+    function onScroll() {
+      const y = window.scrollY + 100; // offset for sticky nav
+      // Toggle back-to-top
+      topBtn.style.display = (window.scrollY > 300) ? 'block' : 'none';
+      // Highlight current nav link
+      let currentId = sections[0]?.id;
+      for (const sec of sections) {
+        if (y >= sec.offsetTop) currentId = sec.id;
+      }
+      navLinks.forEach(a => a.setAttribute('aria-current', a.getAttribute('href') === '#' + currentId ? 'true' : 'false'));
+    }
+    window.addEventListener('scroll', onScroll, { passive:true });
+    onScroll();
+
+    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Gallery images (lazy + fallback)
+    const galleryGrid = document.getElementById('galleryGrid');
+    for (let i = 1; i <= 6; i++) {
+      const img = document.createElement('img');
+      img.src = `img/img${i}.jpg`;
+      img.alt = `Project image ${i}`;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.onerror = () => { img.remove(); };
+      galleryGrid.appendChild(img);
+    }
+
+    // Videos
+    const videosGrid = document.getElementById('videosGrid');
+    const totalVideos = 3;
+
+    // Video descriptions array
+    const videoDescriptions = [
+      "This video combines two parts: First, I demonstrate holding the vehicle's ECU and explain its role in the system. Then, I use the Launch diagnostic scanner to identify faults and error codes, followed by step-by-step ECU programming to configure and test the system. This practical demonstration is ideal for anyone interested in auto electrical work, vehicle diagnostics, and ECU programming.",
+      "I specialize in creating professional and visually appealing graphic designs that bring ideas to life. From logos and business cards to social media posts and banners, I focus on building unique and creative designs tailored to each project. My goal is to combine creativity with simplicity, ensuring every design is both attractive and meaningful.",
+      "In this video, I use my laptop to research and develop my professional skills. I focus on gathering knowledge, tools, and resources that can help me improve and advance in my field. This video provides a practical demonstration of how I build my expertise through ongoing learning and research."
+    ];
+
+    for (let i = 1; i <= totalVideos; i++) {
+      const wrap = document.createElement('div');
+      wrap.className = 'video-item';
+
+      const video = document.createElement('video');
+      video.controls = true;
+      video.preload = 'metadata';
+      video.controlsList = 'nodownload';
+      video.setAttribute('aria-label', `Project Video ${i}`);
+
+      // MP4 source
+      const sourceMp4 = document.createElement('source');
+      sourceMp4.src = `vid/video${i}.mp4`;
+      sourceMp4.type = 'video/mp4';
+      video.appendChild(sourceMp4);
+
+      video.addEventListener('error', () => wrap.remove());
+
+      const caption = document.createElement('div');
+      caption.className = 'caption';
+      caption.innerHTML = `<h4>Project Video ${i}</h4><p>${videoDescriptions[i-1]}</p>`;
+
+      wrap.appendChild(video);
+      wrap.appendChild(caption);
+      videosGrid.appendChild(wrap);
+    }
+
+    // Form submission
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      showMessage('Thank you for your message! I will get back to you soon.');
+      this.reset();
+    });
+
+    // =========================
+    // Language switching (EN/SO)
+    // =========================
+    const i18n = {
+      en: {
+        name: 'Ridwan Farah',
+        title: 'Electrical & Electronics Engineer | AI Developer',
+        nav_profile: 'Profile',
+        nav_services: 'Services',
+        nav_experience: 'Experience',
+        nav_education: 'Education',
+        nav_skills: 'Skills',
+        nav_projects: 'Projects',
+        nav_gallery: 'Gallery',
+        nav_videos: 'Videos',
+        nav_testimonials: 'Testimonials',
+        nav_resume: 'Resume',
+        nav_contact: 'Contact',
+        section_profile: 'Profile',
+        section_services: 'Services I Provide',
+        profile_text: "I hold a Bachelor's Degree in Electrical and Electronics Engineering with hands-on experience in designing, analyzing, and retrofitting electrical systems. My passion includes Embedded Systems, Electric Vehicles, and AI for Engineering. I'm dedicated to creating innovative solutions that bridge the gap between hardware and software.",
+        stat_years: 'Years Experience',
+        stat_projects: 'Projects Completed',
+        stat_clients: 'Happy Clients',
+        stat_awards: 'Awards Won',
+        section_experience: 'Work Experience',
+        section_education: 'Education & Training',
+        section_skills: 'Skills',
+        section_projects: 'Projects',
+        section_gallery: 'Gallery',
+        section_videos: 'Videos',
+        section_testimonials: 'Testimonials',
+        section_resume: 'Resume',
+        section_contact: 'Contact',
+        service_web_title: 'Professional Websites',
+        service_web_desc: 'Fast, responsive, and user-friendly websites for businesses and individuals. Built with modern technologies and optimized for performance.',
+        service_apps_title: 'Custom Applications',
+        service_apps_desc: 'Scalable mobile and desktop applications with modern features tailored to your specific needs and requirements.',
+        service_ai_title: 'AI-Powered Chatbots',
+        service_ai_desc: 'Smart conversational assistants that enhance customer support, improve sales, and automate business processes.',
+        resume_summary_h3: 'Professional Summary',
+        resume_summary_p: 'Electrical Engineer with hands-on experience in automotive diagnostics, ECU systems, and vehicle electronics. Skilled across the full project lifecycle—from concept and design to testing, implementation, and optimization—while maintaining a strong focus on safety, efficiency, and innovation.',
+        resume_lang_h3: 'Languages',
+        lang_somali: 'Somali (Native)',
+        lang_english: 'English',
+        lang_bengali: 'Bengali',
+        lang_turkish: 'Turkish (basic)',
+        resume_hobbies_h3: 'Hobbies',
+        hobby_riding: 'Riding',
+        hobby_writing: 'Writing',
+        hobby_listening: 'Listening',
+        hobby_learning: 'Learning',
+        resume_keyskills_h3: 'Key Skills',
+        resume_experience_h3: 'Experience',
+        resume_edu_h3: 'Education & Workshops',
+        resume_download_btn: 'Download My CV (PDF)',
+        form_name: 'Your Name',
+        form_email: 'Your Email',
+        form_message: 'Your Message',
+        form_send: 'Send Message',
+        rights: 'All rights reserved.',
+        designed: 'Designed with passion by Ridwan Farah'
+      },
+      so: {
+        name: 'Ridwan Farah',
+        title: 'Injineer Korontada iyo Elektaroonigga | Hormuudhaye AI',
+        nav_profile: 'Profile',
+        nav_services: 'Adeegyada',
+        nav_experience: 'Khibrad',
+        nav_education: 'Waxbarashada',
+        nav_skills: 'Xirfadaha',
+        nav_projects: 'Mashaariicda',
+        nav_gallery: 'Gallery',
+        nav_videos: 'Muqaalada',
+        nav_testimonials: 'Testimooniyada',
+        nav_resume: 'Resume',
+        nav_contact: 'Xiriir',
+        section_profile: 'Profile',
+        section_services: 'Adeegyada aan Bixiyo',
+        profile_text: "Waxaan haystaa shahaadada Bachelor ee Injineernimada Korontada iyo Elektaroonigga, waxaana leeyahay khibrad dheeraad ah naqshadeynta, falanqaynta, iyo dayactirka nidaamyada korontada. Waxaan xiiseynaa nidaamyada la guntay, baabuurta korontada, iyo AI ee injineernimada. Waxaan ku dadaalayaa inaan abuuro xallayn cusub oo isku xira hardware iyo software.",
+        stat_years: 'Sanooyin Khibrad',
+        stat_projects: 'Mashaariic Dhamaystiran',
+        stat_clients: 'Macamiil Faraxsan',
+        stat_awards: 'Abaalmarin Loo Qaaday',
+        section_experience: 'Khibrada Shaqada',
+        section_education: 'Waxbarashada iyo Tababarka',
+        section_skills: 'Xirfadaha',
+        section_projects: 'Mashaariicda',
+        section_gallery: 'Gallery',
+        section_videos: 'Muqaalada',
+        section_testimonials: 'Testimooniyada',
+        section_resume: 'Resume',
+        section_contact: 'Xiriir',
+        service_web_title: 'Website-yaal Xirfad leh',
+        service_web_desc: 'Website-yaal degdeg ah, ka jawaabaya, iyo macmiil wanaagsan u ganacsiga iyo shakhsiyadda. Waxaa lagu dhisay technologyad casriga ah waxaana loo habeeyay si ay ugu shaqeyso si fiican.',
+        service_apps_title: 'Barnaamijyada Gaar ah',
+        service_apps_desc: 'Barnaamijyada mobile iyo desktop ee leh sifooyin casriga ah oo loo qaabeeyay baahiyahaaga gaarka ah.',
+        service_ai_title: 'Chatbots-ka AI',
+        service_ai_desc: 'Caawiyayaal wada hadle oo xikmad leh oo kor u qaada taageerada macaamiisha, wax soo saarka iyo automation-ka hawlaha ganacsiga.',
+        resume_summary_h3: 'Koobid Xirfadeed',
+        resume_summary_p: 'Injineer Korontada oo leh khibrad dheeri ah baadhista baabuurta, nidaamyada ECU, iyo elektaroonigada baabuurta. Xirfad lihi nidaamka mashaariicda oo dhan - laga bilaabo fikradda iyo naqshadeynta ilaa imtixaanka, fulinta, iyo hagaajinta - iyadoo lagu sii waday diiradad xooggan ah amniga, wax soo saarka, iyo horumarin.',
+        resume_lang_h3: 'Luuqadaha',
+        lang_somali: 'Soomaali (Hooyo)',
+        lang_english: 'Ingiriisi',
+        lang_bengali: 'Bengaali',
+        lang_turkish: 'Turki (aasaasi)',
+        resume_hobbies_h3: 'Jaammacayaasha',
+        hobby_riding: 'Dabaal',
+        hobby_writing: 'Qorista',
+        hobby_listening: 'Maqalka',
+        hobby_learning: 'Barashada',
+        resume_keyskills_h3: 'Xirfadaha Muhiimka ah',
+        resume_experience_h3: 'Khibrad',
+        resume_edu_h3: 'Waxbarashada & Tababarka',
+        resume_download_btn: 'Soo Dejiso CV-gayga (PDF)',
+        form_name: 'Magacaaga',
+        form_email: 'Emailkaaga',
+        form_message: 'Fariintaada',
+        form_send: 'Dir Fariinta',
+        rights: 'Dhammaan xuquuqda waa la xifdiyay.',
+        designed: 'Loogu talagalay jecel Ridwan Farah'
+      }
+    };
+
+    // Language switching functionality
+    document.querySelectorAll('.language-switcher button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        // Update button states
+        document.querySelectorAll('.language-switcher button').forEach(b => {
+          b.classList.toggle('active', b === btn);
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
         });
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (sectionTop < windowHeight - 100) {
-                    section.style.opacity = '1';
-                    section.style.transform = 'translateY(0)';
-                }
-            });
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                document.getElementById('topBtn').style.display = 'block';
-            } else {
-                document.getElementById('topBtn').style.display = 'none';
-            }
+        
+        // Update all elements with data-i18n attribute
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (i18n[lang] && i18n[lang][key]) {
+            el.textContent = i18n[lang][key];
+          }
         });
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        
+        // Update placeholder texts
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+          const key = el.getAttribute('data-i18n-placeholder');
+          if (i18n[lang] && i18n[lang][key]) {
+            el.placeholder = i18n[lang][key];
+          }
         });
-        window.dispatchEvent(new Event('scroll'));
-        function topFunction() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-        const languageButtons = document.querySelectorAll('.language-switcher button');
-        languageButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                languageButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                showMessage('Language switching functionality would be implemented here');
-            });
-        });
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            showMessage('Thank you for your message! This is a demo form - in a real implementation, this would send your message.');
-            this.reset();
-        });
-    </script>
+        
+        showMessage(`Language changed to ${lang === 'en' ? 'English' : 'Somali'}`);
+      });
+    });
+  </script>
 </body>
 </html>
-
-
-
-
-
