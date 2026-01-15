@@ -799,3 +799,31 @@ footer .social-icons a {
     margin: 20px auto;
     display: block;
 }
+/* ========== PROFILE PHOTO FIX ========== */
+
+/* Remove any previous profile image styles */
+#profile img {
+    width: 180px !important;
+    height: 180px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    display: block !important;
+    margin: 20px auto !important;
+    border: 3px solid #3498db !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+}
+
+/* Responsive sizes */
+@media (max-width: 768px) {
+    #profile img {
+        width: 150px !important;
+        height: 150px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #profile img {
+        width: 130px !important;
+        height: 130px !important;
+    }
+}
