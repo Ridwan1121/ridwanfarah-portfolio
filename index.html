@@ -20,6 +20,18 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Moved inline styles for profile image into internal stylesheet to avoid inline styling */
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 20px auto;
+      border: 3px solid #3498db;
+    }
+  </style>
   <title>Ridwan Abdillahi Farah | Electrical & Electronics Engineer Portfolio</title>
 </head>
 <body>
@@ -68,7 +80,7 @@
       <div class="container">
         <h2 data-i18n="section_profile">Profile</h2>
         <a href="img/profile.jpg" target="_blank" rel="noopener">
-          <img src="img/profile.jpg" alt="Portrait of Ridwan Farah" style="width:180px;height:180px;border-radius:50%;object-fit:cover;display:block;margin:20px auto;border:3px solid #3498db;" onerror="this.alt='Profile photo unavailable'" />
+          <img src="img/profile.jpg" alt="Portrait of Ridwan Farah" class="profile-photo" onerror="this.alt='Profile photo unavailable'" />
         </a>
         <p>
           I hold a Bachelor's Degree in Electrical and Electronics Engineering with hands-on experience in designing, analyzing, and retrofitting electrical systems. 
