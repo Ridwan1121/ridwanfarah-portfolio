@@ -1,30 +1,16 @@
-﻿# 👋 Hi, I''m Ridwan Abdillahi Farah
+﻿# Ridwan Abdillahi Farah - Portfolio
 
-💻 **Electrical & Electronics Engineer | Automotive Electronics Specialist | Embedded Systems & IoT Developer**
+## Electrical & Electronics Engineer
 
-Welcome to my professional portfolio repository! This is the source code for my complete portfolio website.
+Live portfolio: https://ridwan1121.github.io/ridwanfarah-portfolio/
 
-## 🚀 Live Portfolio
-Visit: [https://ridwan1121.github.io/ridwanfarah-portfolio/](https://ridwan1121.github.io/ridwanfarah-portfolio/)
+This repository contains my professional portfolio website.
 
-## 📫 Contact
-- 📧 Email: akiidonly12@gmail.com
-- 🔗 LinkedIn: https://www.linkedin.com/in/ridwan-abdillahi-b1b522237
-- 💻 GitHub: https://github.com/Ridwan1121
+### Features:
+- Updated MATCO experience with website link
+- Professional design
+- Responsive layout
+- Contact form
+- Google Analytics tracking
 
-## 📁 Files
-- `index.html` - Main portfolio with MATCO experience
-- `styles.css` - Styling
-- `app.js` - JavaScript
-- `docs/` - Resume and documents
-- `img/` - Images
-- `vid/` - Videos
-
-## ✨ Features
-- ✅ Updated MATCO experience with website link
-- ✅ Professional design
-- ✅ Responsive layout
-- ✅ Contact form
-- ✅ Google Analytics
-
-*Updated: January 2026*
+*January 2026*
