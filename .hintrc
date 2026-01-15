@@ -1,13 +1,21 @@
+
+## **File 5: `.hintrc` (Webhint Configuration)**
+
+```json
 {
-  "extends": [
-    "development"
-  ],
+  "connector": {
+    "name": "local"
+  },
+  "formatters": ["summary", "html"],
   "hints": {
-    "axe/name-role-value": [
-      "default",
-      {
-        "button-name": "off"
-      }
-    ]
+    "axe": "error",
+    "content-type": "warning",
+    "disown-opener": "error",
+    "html-checker": "error",
+    "meta-charset-utf-8": "error",
+    "meta-viewport": "error",
+    "no-bom": "warning",
+    "no-protocol-relative-urls": "warning",
+    "script-type": "warning"
   }
 }
