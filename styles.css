@@ -163,18 +163,21 @@ section h2 {
   text-align: center;
 }
 
-#profile img {
+/* Profile Image Styles */
+.profile-img {
   border: 5px solid var(--brand);
   border-radius: 50%;
   margin: 0 auto 14px;
   transition: transform .3s;
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
+  object-position: center;
 }
 
-#profile img:hover {
+.profile-img:hover {
   transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
 }
 
 .stats {
@@ -721,5 +724,10 @@ footer .social-icons a {
   
   .phone-separator {
     display: none;
+  }
+  
+  .profile-img {
+    width: 180px;
+    height: 180px;
   }
 }
