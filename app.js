@@ -47,6 +47,151 @@ document.addEventListener("DOMContentLoaded", () => {
 
     topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+    // PROFILE PICTURE FUNCTIONALITY
+    const profileImg = document.getElementById('profilePicture');
+    const updateProfileBtn = document.getElementById('updateProfileBtn');
+    const profileUpdateModal = document.getElementById('profileUpdateModal');
+    const closeModal = document.querySelector('.close-modal');
+    const openFolderBtn = document.getElementById('openFolderBtn');
+    const useGitHubBtn = document.getElementById('useGitHubBtn');
+
+    if (profileImg) {
+        // Add click to enlarge functionality
+        profileImg.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <img src="${profileImg.src}" alt="Full size profile picture" class="modal-image">
+                    <div class="modal-info">
+                        <h3>Ridwan Abdillahi Farah</h3>
+                        <p>Electrical & Electronics Engineer</p>
+                        <div class="modal-actions">
+                            <button class="btn-modal" id="downloadProfile">Download Photo</button>
+                            <button class="btn-modal secondary" id="updatePhoto">Update Photo</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            modal.style.display = 'block';
+            
+            // Close modal functionality
+            modal.querySelector('.close-modal').addEventListener('click', () => {
+                modal.style.display = 'none';
+                setTimeout(() => modal.remove(), 300);
+            });
+            
+            // Close on outside click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    setTimeout(() => modal.remove(), 300);
+                }
+            });
+            
+            // Download photo functionality
+            modal.querySelector('#downloadProfile').addEventListener('click', () => {
+                const link = document.createElement('a');
+                link.href = profileImg.src;
+                link.download = 'Ridwan-Farah-Profile.jpg';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                showMessage('Profile picture download started!');
+            });
+            
+            // Update photo functionality
+            modal.querySelector('#updatePhoto').addEventListener('click', () => {
+                modal.style.display = 'none';
+                setTimeout(() => modal.remove(), 300);
+                showUpdateModal();
+            });
+        });
+        
+        // Hover effect
+        profileImg.addEventListener('mouseenter', () => {
+            profileImg.style.transform = 'scale(1.05)';
+        });
+        
+        profileImg.addEventListener('mouseleave', () => {
+            profileImg.style.transform = 'scale(1)';
+        });
+        
+        // Check image load status
+        profileImg.addEventListener('load', () => {
+            console.log('Profile picture loaded successfully');
+        });
+        
+        profileImg.addEventListener('error', () => {
+            console.error('Profile picture failed to load');
+            profileImg.src = 'https://via.placeholder.com/200x200/3498db/ffffff?text=Ridwan+Farah';
+            profileImg.alt = 'Profile picture placeholder';
+            showMessage('Profile image not found. Using placeholder.', 3000);
+        });
+    }
+
+    // Update profile button
+    if (updateProfileBtn) {
+        updateProfileBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            showUpdateModal();
+        });
+    }
+
+    // Show update modal
+    function showUpdateModal() {
+        if (profileUpdateModal) {
+            profileUpdateModal.style.display = 'block';
+        }
+    }
+
+    // Close modal
+    if (closeModal) {
+        closeModal.addEventListener('click', () => {
+            profileUpdateModal.style.display = 'none';
+        });
+    }
+
+    // Close modal on outside click
+    window.addEventListener('click', (e) => {
+        if (e.target === profileUpdateModal) {
+            profileUpdateModal.style.display = 'none';
+        }
+    });
+
+    // Open folder button
+    if (openFolderBtn) {
+        openFolderBtn.addEventListener('click', () => {
+            showMessage('Open File Explorer and navigate to: img folder in your portfolio directory', 5000);
+            // Create a simple instruction
+            const instruction = `
+To update your profile picture:
+
+1. Find your photo on your computer
+2. Copy it (Ctrl+C)
+3. Open the "img" folder in your portfolio directory
+4. Paste it (Ctrl+V) and rename it to "profile.jpg"
+5. Refresh this page
+
+Location: ${window.location.pathname.replace('/index.html', '')}/img/`;
+            alert(instruction);
+        });
+    }
+
+    // Use GitHub photo button
+    if (useGitHubBtn) {
+        useGitHubBtn.addEventListener('click', () => {
+            const githubPhotoUrl = 'https://github.com/Ridwan1121.png?size=400';
+            profileImg.src = githubPhotoUrl;
+            showMessage('Using GitHub profile picture. To save locally, download and replace img/profile.jpg', 5000);
+            profileUpdateModal.style.display = 'none';
+        });
+    }
+
     // Gallery images (lazy + fallback)
     const galleryGrid = document.getElementById('galleryGrid');
     if (galleryGrid) {
@@ -56,7 +201,10 @@ document.addEventListener("DOMContentLoaded", () => {
           img.alt = `Project image ${i}`;
           img.loading = 'lazy';
           img.decoding = 'async';
-          img.onerror = () => { img.remove(); };
+          img.onerror = () => { 
+              img.src = `https://via.placeholder.com/300x200/2c3e50/ffffff?text=Project+${i}`;
+              img.alt = `Placeholder for project image ${i}`;
+          };
           galleryGrid.appendChild(img);
         }
     }
@@ -87,7 +235,15 @@ document.addEventListener("DOMContentLoaded", () => {
           sourceMp4.type = 'video/mp4';
           video.appendChild(sourceMp4);
 
-          video.addEventListener('error', () => wrap.remove());
+          video.addEventListener('error', () => {
+              wrap.innerHTML = `
+                  <div class="video-placeholder">
+                      <i class="fas fa-video-slash"></i>
+                      <p>Video ${i} not available</p>
+                      <p>${videoDescriptions[i-1]}</p>
+                  </div>
+              `;
+          });
 
           const caption = document.createElement('div');
           caption.className = 'caption';
@@ -219,8 +375,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Language switching functionality
     const i18n = {
         en: {
-            name: 'Ridwan Farah',
-            title: 'Electrical & Electronics Engineer | AI Developer',
+            name: 'Ridwan Abdillahi Farah',
+            title: 'Electrical & Electronics Engineer',
             nav_profile: 'Profile',
             nav_services: 'Services',
             nav_experience: 'Experience',
@@ -234,7 +390,7 @@ document.addEventListener("DOMContentLoaded", () => {
             nav_contact: 'Contact',
             section_profile: 'Profile',
             section_services: 'Services I Provide',
-            profile_text: "I hold a Bachelor's Degree in Electrical and Electronics Engineering with hands-on experience in designing, analyzing, and retrofitting electrical systems. My passion includes Embedded Systems, Electric Vehicles, and AI for Engineering. I'm dedicated to creating innovative solutions that bridge the gap between hardware and software.",
+            profile_text: "I hold a Bachelor's Degree in Electrical and Electronics Engineering with hands-on experience in designing, analyzing, and retrofitting electrical systems. I worked as a Supervisor at MATCO – Modern Automotive Technology Workshop (Telesom Group) from October 2025 to January 2026, specializing in vehicle diagnostics, ECU programming, coding, calibration, and key programming. I am dedicated to creating innovative solutions that bridge the gap between hardware and software.",
             stat_years: 'Years Experience',
             stat_projects: 'Projects Completed',
             stat_clients: 'Happy Clients',
@@ -255,7 +411,7 @@ document.addEventListener("DOMContentLoaded", () => {
             service_ai_title: 'AI-Powered Chatbots',
             service_ai_desc: 'Smart conversational assistants that enhance customer support, improve sales, and automate business processes.',
             resume_summary_h3: 'Professional Summary',
-            resume_summary_p: 'Electrical Engineer with hands-on experience in automotive diagnostics, ECU systems, and vehicle electronics. Skilled across the full project lifecyclefrom concept and design to testing, implementation, and optimizationwhile maintaining a strong focus on safety, efficiency, and innovation.',
+            resume_summary_p: 'Electrical Engineer with hands-on experience in automotive diagnostics, ECU systems, and vehicle electronics. Skilled across the full project lifecycle—from concept and design to testing, implementation, and optimization—while maintaining a strong focus on safety, efficiency, and innovation.',
             resume_lang_h3: 'Languages',
             lang_somali: 'Somali (Native)',
             lang_english: 'English',
@@ -278,8 +434,8 @@ document.addEventListener("DOMContentLoaded", () => {
             designed: 'Designed with passion by Ridwan Farah'
         },
         so: {
-            name: 'Ridwan Farah',
-            title: 'Injineer Korontada iyo Elektaroonigga | Hormuudhaye AI',
+            name: 'Ridwan Cabdillaahi Faarax',
+            title: 'Injineer Korontada iyo Elektaroonigga',
             nav_profile: 'Profile',
             nav_services: 'Adeegyada',
             nav_experience: 'Khibrad',
@@ -293,7 +449,7 @@ document.addEventListener("DOMContentLoaded", () => {
             nav_contact: 'Xiriir',
             section_profile: 'Profile',
             section_services: 'Adeegyada aan Bixiyo',
-            profile_text: "Waxaan haystaa shahaadada Bachelor ee Injineernimada Korontada iyo Elektaroonigga, waxaana leeyahay khibrad dheeraad ah naqshadeynta, falanqaynta, iyo dayactirka nidaamyada korontada. Waxaan xiiseynaa nidaamyada la guntay, baabuurta korontada, iyo AI ee injineernimada. Waxaan ku dadaalayaa inaan abuuro xallayn cusub oo isku xira hardware iyo software.",
+            profile_text: "Waxaan haystaa shahaadada Bachelor ee Injineernimada Korontada iyo Elektaroonigga, waxaana leeyahay khibrad dheeraad ah naqshadeynta, falanqaynta, iyo dayactirka nidaamyada korontada. Waxaan ka shaqeeyay sida Maamule ku xigeen MATCO – Modern Automotive Technology Workshop (Telesom Group) laga bilaabo Oktoobar 2025 ilaa Janaayo 2026, waxaana khaas u ahaa baadhista baabuurta, barnaamijyada ECU, coding, calaamadaynta, iyo barnaamijyada fure. Waxaan ku dadaalayaa inaan abuuro xallayn cusub oo isku xira hardware iyo software.",
             stat_years: 'Sanooyin Khibrad',
             stat_projects: 'Mashaariic Dhamaystiran',
             stat_clients: 'Macamiil Faraxsan',
@@ -334,7 +490,7 @@ document.addEventListener("DOMContentLoaded", () => {
             form_message: 'Fariintaada',
             form_send: 'Dir Fariinta',
             rights: 'Dhammaan xuquuqda waa la xifdiyay.',
-            designed: 'Loogu talagalay jecel Ridwan Farah'
+            designed: 'Loogu talagalay jecel Ridwan Faarax'
         }
     };
 
@@ -367,4 +523,6 @@ document.addEventListener("DOMContentLoaded", () => {
             showMessage(`Language changed to ${lang === 'en' ? 'English' : 'Somali'}`);
         });
     });
+    
+    console.log('Portfolio JavaScript loaded successfully!');
 });
