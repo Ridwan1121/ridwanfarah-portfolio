@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Al Huseini Sunpower</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .admin-login {
+            max-width: 400px;
+            margin: 100px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .admin-login h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .admin-login input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .admin-dashboard {
+            display: none;
+        }
+        .installation-list {
+            margin-top: 30px;
+        }
+        .installation-item {
+            background: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .add-installation {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+        .add-installation input, .add-installation textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-login" id="adminLogin">
+            <h2>Admin Login</h2>
+            <input type="text" id="adminUsername" placeholder="Username" value="admin">
+            <input type="password" id="adminPassword" placeholder="Password" value="admin123">
+            <button class="btn btn-primary" onclick="login()">Login</button>
+        </div>
+        
+        <div class="admin-dashboard" id="adminDashboard">
+            <h2>Admin Dashboard</h2>
+            <h3>Solar Installations</h3>
+            <div class="installation-list" id="installationList"></div>
+            
+            <div class="add-installation">
+                <h4>Add New Installation</h4>
+                <input type="text" id="installLocation" placeholder="Location (e.g., Hargeisa)">
+                <input type="text" id="installPower" placeholder="Power (e.g., 5kW)">
+                <textarea id="installDetails" rows="3" placeholder="Installation details"></textarea>
+                <button class="btn btn-primary" onclick="addInstallation()">Add Installation</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let installations = JSON.parse(localStorage.getItem('installations') || '[]');
+        
+        function login() {
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            if (username === 'admin' && password === 'admin123') {
+                document.getElementById('adminLogin').style.display = 'none';
+                document.getElementById('adminDashboard').style.display = 'block';
+                loadInstallations();
+            } else {
+                alert('Invalid credentials');
+            }
+        }
+        
+        function loadInstallations() {
+            const list = document.getElementById('installationList');
+            list.innerHTML = '';
+            installations.forEach((item, index) => {
+                list.innerHTML += `
+                    <div class="installation-item">
+                        <div>
+                            <strong>${item.location}</strong> - ${item.power}<br>
+                            <small>${item.details}</small>
+                        </div>
+                        <button class="btn-danger" onclick="deleteInstallation(${index})">Delete</button>
+                    </div>
+                `;
+            });
+        }
+        
+        function addInstallation() {
+            const location = document.getElementById('installLocation').value;
+            const power = document.getElementById('installPower').value;
+            const details = document.getElementById('installDetails').value;
+            if (location && power) {
+                installations.push({ location, power, details, date: new Date().toISOString() });
+                localStorage.setItem('installations', JSON.stringify(installations));
+                loadInstallations();
+                document.getElementById('installLocation').value = '';
+                document.getElementById('installPower').value = '';
+                document.getElementById('installDetails').value = '';
+            }
+        }
+        
+        function deleteInstallation(index) {
+            installations.splice(index, 1);
+            localStorage.setItem('installations', JSON.stringify(installations));
+            loadInstallations();
+        }
+        
+        function showInstallations() {
+            const container = document.getElementById('publicInstallations');
+            if (container) {
+                container.innerHTML = installations.map(item => `
+                    <div class="installation-card">
+                        <h4>${item.location}</h4>
+                        <p>Power: ${item.power}</p>
+                        <p>${item.details}</p>
+                        <small>Installed: ${new Date(item.date).toLocaleDateString()}</small>
+                    </div>
+                `).join('');
+            }
+        }
+    </script>
+</body>
+</html>

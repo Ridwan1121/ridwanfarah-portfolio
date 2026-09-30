@@ -1,0 +1,17 @@
+﻿{
+  "connector": {
+    "name": "local"
+  },
+  "formatters": ["summary", "html"],
+  "hints": {
+    "axe": "error",
+    "content-type": "warning",
+    "disown-opener": "error",
+    "html-checker": "error",
+    "meta-charset-utf-8": "error",
+    "meta-viewport": "error",
+    "no-bom": "warning",
+    "no-protocol-relative-urls": "warning",
+    "script-type": "warning"
+  }
+}
